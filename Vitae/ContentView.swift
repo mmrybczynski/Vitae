@@ -6,19 +6,48 @@
 //
 
 import SwiftUI
+#if os(iOS)
+import UIKit
+#endif
 
 struct ContentView: View {
-    var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+    @Environment(\.horizontalSizeClass) private var hSizeClass
+
+    private enum Idiom { case phone, pad, mac, other }
+
+    private var idiom: Idiom {
+        #if os(macOS)
+        return .mac
+        #elseif os(iOS)
+        switch UIDevice.current.userInterfaceIdiom {
+        case .phone: return .phone
+        case .pad:   return .pad
+        default:     return .other
         }
-        .padding()
+        #else
+        return .other
+        #endif
+    }
+
+    var body: some View {
+        switch idiom {
+        case .mac:
+            MacView() // macOS-specyficzny UI
+        case .phone, .pad:
+            // iOS/iPadOS: układ sterowany rozmiarem, nie „typem urządzenia”
+            Group {
+                if hSizeClass == .compact {
+                    PhoneView()
+                } else {
+                    IPadView()
+                }
+            }
+        case .other:
+            DefaultView()
+        }
     }
 }
 
-#Preview {
+#Preview("iPhone") {
     ContentView()
 }
