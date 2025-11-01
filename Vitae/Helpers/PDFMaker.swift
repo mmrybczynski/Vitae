@@ -27,6 +27,10 @@ struct PDFMaker {
                 let pageContent = pageContent(index)
                 let SwiftUIRenderer = ImageRenderer(content: pageContent.frame(width: size.width, height: size.height))
                 SwiftUIRenderer.proposedSize = .init(size)
+                
+                context.cgContext.translateBy(x: 0, y: size.height)
+                context.cgContext.scaleBy(x: 1, y: -1)
+                
                 SwiftUIRenderer.render {_, swiftUIContext in
                     swiftUIContext(context.cgContext)
                 }
