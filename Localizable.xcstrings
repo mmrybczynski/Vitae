@@ -1,0 +1,17 @@
+{
+  "sourceLanguage" : "pl",
+  "strings" : {
+    "Witaj" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Welcome"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.1"
+}
