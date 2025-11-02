@@ -33,16 +33,7 @@ struct ContentView: View {
         switch idiom {
         case .mac:
             MacView() // macOS-specyficzny UI
-        case .phone, .pad:
-            // iOS/iPadOS: układ sterowany rozmiarem, nie „typem urządzenia”
-            Group {
-                if hSizeClass == .compact {
-                    PhoneView()
-                } else {
-                    IPadView()
-                }
-            }
-        case .other:
+        case .phone, .pad, .other:
             DefaultView()
         }
     }
