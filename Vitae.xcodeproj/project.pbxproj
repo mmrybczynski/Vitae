@@ -92,7 +92,7 @@
 				};
 			};
 			buildConfigurationList = C15D143D2EB5E75700B29AF2 /* Build configuration list for PBXProject "Vitae" */;
-			developmentRegion = pl;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
