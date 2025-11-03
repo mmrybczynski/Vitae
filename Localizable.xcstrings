@@ -12,6 +12,17 @@
         }
       }
     },
+    "jobDescription" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Job description"
+          }
+        }
+      }
+    },
     "jobEndDate" : {
       "extractionState" : "manual",
       "localizations" : {
