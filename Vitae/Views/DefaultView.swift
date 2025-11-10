@@ -16,7 +16,7 @@ struct DefaultView: View {
     var body: some View {
         ScrollView {
             // Personal Data
-            TextField("Name", text: $defaultData.name)
+            TextField(.name, text: $defaultData.name)
                 .textContentType(.name)
                 .submitLabel(.next)
                 .padding(.horizontal, 14)
@@ -28,7 +28,7 @@ struct DefaultView: View {
                 )
                 .shadow(color: Color.black.opacity(0.05), radius: 8, x: 0, y: 2)
                 .padding(.vertical, 4)
-            TextField("Surename", text: $defaultData.surename)
+            TextField(.surename, text: $defaultData.surename)
                 .textContentType(.name)
                 .submitLabel(.next)
                 .padding(.horizontal, 14)
@@ -40,7 +40,7 @@ struct DefaultView: View {
                 )
                 .shadow(color: Color.black.opacity(0.05), radius: 8, x: 0, y: 2)
                 .padding(.vertical, 4)
-            TextField("About me", text: $defaultData.description)
+            TextField(.aboutme, text: $defaultData.description)
                 .textContentType(.none)
                 .submitLabel(.done)
                 .padding(.horizontal, 14)

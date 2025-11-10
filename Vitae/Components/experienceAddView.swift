@@ -20,7 +20,7 @@ struct experienceAddView: View {
 
             DatePicker(.jobStartDatee, selection: $entry.startDate, displayedComponents: .date)
 
-            Toggle("Currently work here", isOn: $entry.isCurrent)
+            Toggle(.currentlyjob, isOn: $entry.isCurrent)
                 .onChange(of: entry.isCurrent) { oldValue, newValue in
                         if newValue { entry.endDate = nil }
                     }

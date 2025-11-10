@@ -11,19 +11,19 @@ struct schoolAddView: View {
     @Binding var school: SchoolEntry
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            TextField("School", text: $school.school)
+            TextField(.school, text: $school.school)
                 .textFieldStyle(.roundedBorder)
 
-            TextField("Degree", text: $school.degree)
+            TextField(.degree, text: $school.degree)
                 .textFieldStyle(.roundedBorder)
 
-            Toggle("Currently study here", isOn: $school.isCurrentSchool)
+            Toggle(.currentlystudy, isOn: $school.isCurrentSchool)
                 .onChange(of: school.isCurrentSchool) { oldValue, newValue in
                         if newValue { school.graduationYear = nil }
                     }
                 
             if !school.isCurrentSchool {
-                DatePicker("Graduation year", selection: Binding(
+                DatePicker(.graduation, selection: Binding(
                     get: { school.graduationYear ?? Date() },
                     set: { school.graduationYear = $0 }
                 ), displayedComponents: .date)
