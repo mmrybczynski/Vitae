@@ -8,32 +8,26 @@
 import SwiftUI
 
 struct schoolAddView: View {
-    @Binding var entry: EmploymentEntry
+    @Binding var school: SchoolEntry
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            TextField("School", text: $entry.school)
+            TextField("School", text: $school.school)
                 .textFieldStyle(.roundedBorder)
 
-            TextField("Degree", text: $entry.degree)
+            TextField("Degree", text: $school.degree)
                 .textFieldStyle(.roundedBorder)
 
-            DatePicker(.jobStartDatee, selection: $entry.startDate, displayedComponents: .date)
-
-            Toggle("Currently work here", isOn: $entry.isCurrent)
-                .onChange(of: entry.isCurrent) { oldValue, newValue in
-                        if newValue { entry.endDate = nil }
+            Toggle("Currently study here", isOn: $school.isCurrentSchool)
+                .onChange(of: school.isCurrentSchool) { oldValue, newValue in
+                        if newValue { school.graduationYear = nil }
                     }
                 
-            if !entry.isCurrent {
-                DatePicker(.jobEndDate, selection: Binding(
-                    get: { entry.endDate ?? Date() },
-                    set: { entry.endDate = $0 }
+            if !school.isCurrentSchool {
+                DatePicker("Graduation year", selection: Binding(
+                    get: { school.graduationYear ?? Date() },
+                    set: { school.graduationYear = $0 }
                 ), displayedComponents: .date)
             }
-
-            TextField(.jobDescription, text: $entry.jobDescription, axis: .vertical)
-                .textFieldStyle(.roundedBorder)
-                .lineLimit(3, reservesSpace: true)
         }
         .padding()
         .background(.thinMaterial)
@@ -47,5 +41,5 @@ struct schoolAddView: View {
 }
 
 #Preview {
-    schoolAddView(entry: .constant(EmploymentEntry()))
+    schoolAddView(school: .constant(SchoolEntry()))
 }
