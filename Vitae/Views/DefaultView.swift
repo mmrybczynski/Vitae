@@ -24,11 +24,11 @@ struct DefaultView: View {
                         .ignoresSafeArea() 
             ScrollView {
                 // Personal Data
-                TextFieldView(title: "personalname", content: defaultData.name)
+                TextFieldView(title: "personalname", content: defaultData.name, kind: .name)
                 
-                TextFieldView(title: "surename", content: defaultData.surename)
+                TextFieldView(title: "surename", content: defaultData.surename, kind: .surename)
                 
-                TextFieldView(title: "aboutme", content: defaultData.description)
+                TextFieldView(title: "aboutme", content: defaultData.description, kind: .aboutMe)
                 
                 // School
                 ForEach($schoolEntries) { $entry in
