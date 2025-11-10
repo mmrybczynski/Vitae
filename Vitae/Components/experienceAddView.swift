@@ -37,13 +37,14 @@ struct experienceAddView: View {
                 .lineLimit(3, reservesSpace: true)
         }
         .padding()
-        .background(.thinMaterial)
-        //.background(.thinMaterial, in: RoundedRectangle(cornerRadius: 12, style: .continuous))
-        //.overlay(
-        //    RoundedRectangle(cornerRadius: 12)
-        //        .strokeBorder(.quaternary, lineWidth: 1)
-        //)
+        //.background(.ultraThinMaterial)
+        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 12, style: .continuous))
+        .overlay(
+            RoundedRectangle(cornerRadius: 12)
+                .strokeBorder(.quaternary, lineWidth: 1)
+        )
         .accessibilityElement(children: .contain)
+        .padding()
     }
 }
 

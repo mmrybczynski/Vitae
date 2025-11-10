@@ -29,7 +29,7 @@ struct EmploymentFormView: View {
                     Text("Experience")
                 }
                 
-                /*
+
 
                 Section("Aggregated lists (preview)") {
                     // Dla podglądu – w realnej aplikacji możesz to przekazać do VM / serwisu:
@@ -38,7 +38,6 @@ struct EmploymentFormView: View {
                     Text("position: \(positions.joined(separator: ", "))")
                         .font(.footnote)
                 }
-                 */
             }
             .navigationTitle("Employment")
             .toolbar {
