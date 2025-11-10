@@ -9,6 +9,11 @@ import SwiftUI
 
 struct EmploymentEntry: Identifiable, Hashable {
     let id = UUID()
+    var name: String = ""
+    var surename: String = ""
+    var school: String = ""
+    var degree: String = ""
+    var graduationYear: Date? = nil
     var employer: String = ""
     var position: String = ""
     var startDate: Date = Date()

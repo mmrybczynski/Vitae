@@ -11,8 +11,13 @@ struct DefaultView: View {
     @State private var pdfURL: URL?
     @State private var showFileMover: Bool = false
     @State private var entries: [EmploymentEntry] = [EmploymentEntry()]
+    @State private var defaultData = EmploymentEntry()
     var body: some View {
         ScrollView {
+            Text("Name")
+                .font(.title)
+            TextField("Name", text: $defaultData.name)
+            TextField("Surename", text: $defaultData.surename)
             
             //Emloyer
             Text("Employment")
