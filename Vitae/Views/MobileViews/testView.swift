@@ -33,6 +33,7 @@ struct EmploymentFormView: View {
                 }
             }
             .navigationTitle("Employment")
+#if os(iOS)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     EditButton()
@@ -59,6 +60,7 @@ struct EmploymentFormView: View {
                     }
                 }
             }
+#endif
         }
     }
 
