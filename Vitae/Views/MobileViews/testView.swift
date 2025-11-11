@@ -1,12 +1,5 @@
 import SwiftUI
 
-// MARK: - Model
-
-
-// MARK: - Komponent (osobny View)
-
-
-// MARK: - Widok nadrzędny (dodawanie + zbieranie list)
 struct EmploymentFormView: View {
     @State private var entries: [EmploymentEntry] = [EmploymentEntry()]
 
@@ -15,7 +8,7 @@ struct EmploymentFormView: View {
             Form {
                 Section {
                     ForEach($entries) { $entry in
-                        experienceAddView(entry: $entry)
+                        experienceAdd(entry: $entry)
                             .listRowInsets(EdgeInsets())
                             .listRowSeparator(.hidden)
                     }
@@ -69,7 +62,6 @@ struct EmploymentFormView: View {
         }
     }
 
-    // MARK: - Zbiór wymaganych list
     var employers: [String] { entries.map { $0.employer } }
     var positions: [String] { entries.map { $0.position } }
     var startDates: [Date] { entries.map { $0.startDate } }
@@ -77,7 +69,6 @@ struct EmploymentFormView: View {
     var jobDescriptions: [String] { entries.map { $0.jobDescription } }
 }
 
-// MARK: - Podgląd
 #Preview {
     EmploymentFormView()
 }

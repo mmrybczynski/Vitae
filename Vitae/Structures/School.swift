@@ -5,12 +5,6 @@
 //  Created by Mateusz Rybczyński on 10/11/2025.
 //
 
-//
-//  Employment.swift
-//  Vitae
-//
-//  Created by Mateusz Rybczyński on 03/11/2025.
-//
 import Foundation
 import SwiftUI
 

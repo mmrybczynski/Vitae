@@ -1,13 +1,13 @@
 //
-//  experienceAddView.swift
+//  experienceAdd.swift
 //  Vitae
 //
-//  Created by Mateusz Rybczyński on 03/11/2025.
+//  Created by Mateusz Rybczyński on 11/11/2025.
 //
 
 import SwiftUI
 
-struct experienceAddView: View {
+struct experienceAdd: View {
     @Binding var entry: EmploymentEntry
 
     var body: some View {
@@ -49,6 +49,5 @@ struct experienceAddView: View {
 }
 
 #Preview {
-    experienceAddView(entry: .constant(EmploymentEntry()))
+    experienceAdd(entry: .constant(EmploymentEntry()))
 }
-

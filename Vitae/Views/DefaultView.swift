@@ -16,68 +16,20 @@ struct DefaultView: View {
     @State private var countJobs: Int = 1
     @State private var countSchools: Int = 1
     var body: some View {
-        ZStack {
-            LinearGradient(
-                            colors: [.purple, .blue],
-                            startPoint: .top, endPoint: .bottom
-                        )
-                        .ignoresSafeArea() 
-            ScrollView {
-                // Personal Data
-                TextFieldView(title: "personalname", content: defaultData.name, kind: .name)
-                
-                TextFieldView(title: "surename", content: defaultData.surename, kind: .surename)
-                
-                TextFieldView(title: "aboutme", content: defaultData.description, kind: .aboutMe)
-                
-                // School
-                ForEach($schoolEntries) { $entry in
-                    schoolAddView(school: $entry)
-                        .listRowInsets(EdgeInsets())
-                        .listRowSeparator(.hidden)
-                }
-                .onDelete { indexSet in
-                    schoolEntries.remove(atOffsets: indexSet)
-                }
-                .onMove { from, to in
-                    schoolEntries.move(fromOffsets: from, toOffset: to)
-                }
-                
-                if countSchools < 2 {
-                    Button {
-                        schoolEntries.append(SchoolEntry())
-                        countSchools += 1
-                        print(countSchools)
-                    } label: {
-                        Label(.add, systemImage: "plus.circle.fill")
+        NavigationView {
+            VStack {
+                Spacer()
+                Grid {
+                    GridRow {
+                        Card(type: .personal)
+                        Card(type: .interest)
+                    }
+                    GridRow {
+                        Card(type: .school)
+                        Card(type: .job)
                     }
                 }
-                
-                
-                //Emloyer
-                ForEach($entries) { $entry in
-                    experienceAddView(entry: $entry)
-                        .listRowInsets(EdgeInsets())
-                        .listRowSeparator(.hidden)
-                }
-                .onDelete { indexSet in
-                    entries.remove(atOffsets: indexSet)
-                }
-                .onMove { from, to in
-                    entries.move(fromOffsets: from, toOffset: to)
-                }
-                
-                if countJobs < 2 {
-                    Button {
-                        entries.append(EmploymentEntry())
-                        countJobs += 1
-                    } label: {
-                        Label(.add, systemImage: "plus.circle.fill")
-                    }
-                }
-                
-                
-                Button(.exportpdf) {
+                Button {
                     if let pdfURL = try? PDFMaker.create(pageCount: 1, pageContent: { pageIndex in
                         VStack {
                             HStack {
@@ -89,9 +41,12 @@ struct DefaultView: View {
                         self.pdfURL = pdfURL
                         showFileMover.toggle()
                     }
+                } label: {
+                    Text(.exportpdf)
+                        .foregroundStyle(Color(.black))
                 }
-                
             }
+            .navigationTitle(.hellolabel)
             .fileMover(isPresented: $showFileMover, file: pdfURL) {result in
                 print(result)
             }
